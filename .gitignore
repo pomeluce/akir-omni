@@ -1,0 +1,42 @@
+# Development docs
+docs/
+.nvim/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+out/
+build/
+*.tsbuildinfo
+
+# Environment
+.env.local
+.env.*.local
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Electron
+apps/desktop/release/
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
+.vite/

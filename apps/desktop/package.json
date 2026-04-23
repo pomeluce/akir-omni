@@ -1,0 +1,30 @@
+{
+  "name": "@app/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/apps/desktop-electron/src/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:4300 && ELECTRON_DEV_URL=http://localhost:4300 tsc --project tsconfig.electron.json && electron .\"",
+    "build": "vite build && tsc --project tsconfig.electron.json",
+    "typecheck": "tsc --project tsconfig.electron.json --noEmit && tsc --noEmit"
+  },
+  "dependencies": {
+    "@app/platform": "workspace:*",
+    "@app/store": "workspace:*",
+    "@app/theme": "workspace:*",
+    "@app/ui": "workspace:*",
+    "@tanstack/react-query": "^5.99.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router": "^7.14.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.4",
+    "@vitejs/plugin-react-swc": "^4.3.0",
+    "electron": "^41.3.0",
+    "electron-builder": "^26.8.1",
+    "tsx": "^4.21.0",
+    "vite": "^8.0.10"
+  }
+}

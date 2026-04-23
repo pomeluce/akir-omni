@@ -1,0 +1,21 @@
+appId: com.akir.omni
+productName: Akir Omni
+directories:
+  buildResources: build
+  output: release
+files:
+  - dist/apps/desktop-electron/**/*
+  - dist/apps/desktop-renderer/**/*
+  - package.json
+win:
+  target:
+    - nsis
+  icon: build/icon.ico
+linux:
+  target:
+    - AppImage
+  icon: build/icon.png
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
