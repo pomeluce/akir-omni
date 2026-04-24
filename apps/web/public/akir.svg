@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254">
+  <!-- Background -->
+  <rect x="0" y="0" width="1254" height="1254" rx="205" ry="205" fill="#3450c8"/>
+
+  <!-- Left main stroke -->
+  <polygon fill="#ffffff" points="205,875 628,214 676,447 531,805" />
+
+  <!-- Right upper stroke -->
+  <polygon fill="#ffffff" points="628,214 806,415 940,753 820,766 676,447" />
+
+  <!-- Bottom cross stroke -->
+  <polygon fill="#ffffff" points="205,875 940,753 372,1005" />
+
+  <!-- Right lower folded stroke -->
+  <polygon fill="#ffffff" points="940,753 1060,1040 905,930 849,811" />
+
+  <!-- Fold seam at top -->
+  <path d="M628 214 L676 447" fill="none" stroke="#3450c8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Fold seam at right -->
+  <path d="M940 753 L849 811" fill="none" stroke="#3450c8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

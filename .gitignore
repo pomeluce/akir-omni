@@ -2,6 +2,9 @@
 docs/
 .nvim/
 
+# Claude Code Cli
+.superpowers/
+
 # Dependencies
 node_modules/
 
@@ -40,3 +43,6 @@ apps/desktop/release/
 .eslintcache
 .stylelintcache
 .vite/
+
+# Tanstack Router Cache
+.tanstack/
