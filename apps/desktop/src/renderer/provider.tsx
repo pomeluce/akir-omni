@@ -15,7 +15,7 @@ interface ProvidersProps {
   children: ReactNode;
 }
 
-export function Providers({ children }: ProvidersProps) {
+export function Provider({ children }: ProvidersProps) {
   return (
     <ThemeProvider defaultScheme="default" defaultMode="light">
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

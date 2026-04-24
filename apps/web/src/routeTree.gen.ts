@@ -9,13 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root';
+import { Route as HomeRouteImport } from './pages/home';
 import { Route as AuthRouteImport } from './pages/_auth';
 import { Route as AppRouteImport } from './pages/_app';
 import { Route as R404RouteImport } from './pages/404';
+import { Route as IndexRouteImport } from './pages/index';
 import { Route as AuthLoginRouteImport } from './pages/_auth/login';
 import { Route as AppSettingsRouteImport } from './pages/_app/settings';
 import { Route as AppDashboardRouteImport } from './pages/_app/dashboard';
 
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any);
 const AuthRoute = AuthRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
@@ -27,6 +34,11 @@ const AppRoute = AppRouteImport.update({
 const R404Route = R404RouteImport.update({
   id: '/404',
   path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any);
 const AuthLoginRoute = AuthLoginRouteImport.update({
@@ -46,44 +58,57 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
 } as any);
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute;
   '/404': typeof R404Route;
-  '/': typeof AuthRouteWithChildren;
+  '/home': typeof HomeRoute;
   '/dashboard': typeof AppDashboardRoute;
   '/settings': typeof AppSettingsRoute;
   '/login': typeof AuthLoginRoute;
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute;
   '/404': typeof R404Route;
-  '/': typeof AuthRouteWithChildren;
+  '/home': typeof HomeRoute;
   '/dashboard': typeof AppDashboardRoute;
   '/settings': typeof AppSettingsRoute;
   '/login': typeof AuthLoginRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
+  '/': typeof IndexRoute;
   '/404': typeof R404Route;
   '/_app': typeof AppRouteWithChildren;
   '/_auth': typeof AuthRouteWithChildren;
+  '/home': typeof HomeRoute;
   '/_app/dashboard': typeof AppDashboardRoute;
   '/_app/settings': typeof AppSettingsRoute;
   '/_auth/login': typeof AuthLoginRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/404' | '/' | '/dashboard' | '/settings' | '/login';
+  fullPaths: '/' | '/404' | '/home' | '/dashboard' | '/settings' | '/login';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/404' | '/' | '/dashboard' | '/settings' | '/login';
-  id: '__root__' | '/404' | '/_app' | '/_auth' | '/_app/dashboard' | '/_app/settings' | '/_auth/login';
+  to: '/' | '/404' | '/home' | '/dashboard' | '/settings' | '/login';
+  id: '__root__' | '/' | '/404' | '/_app' | '/_auth' | '/home' | '/_app/dashboard' | '/_app/settings' | '/_auth/login';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute;
   R404Route: typeof R404Route;
   AppRoute: typeof AppRouteWithChildren;
   AuthRoute: typeof AuthRouteWithChildren;
+  HomeRoute: typeof HomeRoute;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/home': {
+      id: '/home';
+      path: '/home';
+      fullPath: '/home';
+      preLoaderRoute: typeof HomeRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/_auth': {
       id: '/_auth';
       path: '';
@@ -103,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/404';
       fullPath: '/404';
       preLoaderRoute: typeof R404RouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/': {
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/_auth/login': {
@@ -152,8 +184,10 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren);
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   R404Route: R404Route,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRouteWithChildren,
+  HomeRoute: HomeRoute,
 };
 export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>();
