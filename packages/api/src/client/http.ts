@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { AxiosRequestConfig } from 'axios';
-import { requestInterceptor, responseInterceptor, responseErrorInterceptor } from './interceptors.js';
+import { requestInterceptor, responseInterceptor, responseErrorInterceptor } from './interceptors';
 
 const DEFAULT_CONFIG: AxiosRequestConfig = {
   timeout: 30000,

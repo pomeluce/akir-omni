@@ -1,4 +1,4 @@
-import type { AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
+import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 
 export function requestInterceptor(config: InternalAxiosRequestConfig): InternalAxiosRequestConfig {
   return config;

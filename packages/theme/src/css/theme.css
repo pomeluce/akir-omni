@@ -1,7 +1,6 @@
 @import './themes/default.css';
 @import './themes/forest.css';
 @import './themes/sunset.css';
-@import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 

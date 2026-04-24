@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import '@app/theme/css/theme.css';
+@import '@app/theme/css/globals.css';
+
+@import '@app/ui/source.css';

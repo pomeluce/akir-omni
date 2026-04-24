@@ -1,7 +1,6 @@
 import { Providers } from './providers.js';
 import { AppRouter } from './router.js';
-import '@app/theme/css/tailwind.css';
-import '@app/theme/css/globals.css';
+import './app.css';
 
 export function App() {
   return (
