@@ -1,6 +1,6 @@
 import { Button } from '@app/ui';
 import { useTheme } from '@app/theme';
-import type { ThemeScheme } from '@app/theme';
+import type { ThemeScheme, ThemeMode } from '@app/theme';
 
 const schemes: { value: ThemeScheme; label: string }[] = [
   { value: 'default', label: 'Default' },
@@ -47,8 +47,14 @@ const swatches: { title: string; classes: string[] }[] = [
   },
 ];
 
+const modes: { value: ThemeMode; label: string }[] = [
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+  { value: 'system', label: 'System' },
+];
+
 export function HomePage() {
-  const { scheme, mode, setScheme, toggleMode } = useTheme();
+  const { scheme, mode, resolvedMode, setScheme, setMode } = useTheme();
 
   return (
     <div className="container mx-auto space-y-8 px-4 py-8">
@@ -56,13 +62,18 @@ export function HomePage() {
         <h2 className="text-2xl font-bold text-foreground">Akir Omni Theme Preview</h2>
         <p className="mt-2 text-muted-foreground">
           Current: {scheme} / {mode}
+          {mode === 'system' ? ` (${resolvedMode})` : ''}
         </p>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <Button onClick={toggleMode} variant="outline" size="sm">
-          {mode === 'light' ? 'Dark Mode' : 'Light Mode'}
-        </Button>
+        <div className="flex gap-1.5">
+          {modes.map(m => (
+            <Button key={m.value} onClick={() => setMode(m.value)} variant={mode === m.value ? 'default' : 'outline'} size="sm">
+              {m.label}
+            </Button>
+          ))}
+        </div>
         <div className="flex gap-1.5">
           {schemes.map(s => (
             <Button key={s.value} onClick={() => setScheme(s.value)} variant={scheme === s.value ? 'default' : 'outline'} size="sm">

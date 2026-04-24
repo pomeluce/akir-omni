@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { createStorage } from '@app/core';
 
 export type ThemeScheme = 'default' | 'forest' | 'sunset';
-export type ThemeMode = 'light' | 'dark';
+export type ThemeMode = 'light' | 'dark' | 'system';
 
 interface ThemeState {
   scheme: ThemeScheme;
@@ -19,23 +19,23 @@ export interface ThemeProviderProps {
 export interface UseThemeReturn {
   scheme: ThemeScheme;
   mode: ThemeMode;
+  resolvedMode: 'light' | 'dark';
   setScheme: (scheme: ThemeScheme) => void;
   setMode: (mode: ThemeMode) => void;
-  toggleMode: () => void;
 }
 
 const ThemeContext = createContext<UseThemeReturn | null>(null);
 
-function applyDOM(scheme: ThemeScheme, mode: ThemeMode) {
+function applyDOM(scheme: ThemeScheme, resolvedMode: 'light' | 'dark') {
   const el = document.documentElement;
   if (scheme === 'default') delete el.dataset.scheme;
   else el.dataset.scheme = scheme;
 
-  if (mode === 'light') delete el.dataset.theme;
-  else el.dataset.theme = mode;
+  if (resolvedMode === 'light') delete el.dataset.theme;
+  else el.dataset.theme = resolvedMode;
 }
 
-export function ThemeProvider({ children, defaultScheme = 'default', defaultMode = 'light', storageKey = 'theme' }: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultScheme = 'default', defaultMode = 'system', storageKey = 'theme' }: ThemeProviderProps) {
   const storage = useMemo(() => createStorage<ThemeState>({ type: 'local', prefix: storageKey }), [storageKey]);
 
   const [state, setState] = useState<ThemeState>(() => {
@@ -49,9 +49,21 @@ export function ThemeProvider({ children, defaultScheme = 'default', defaultMode
     };
   });
 
+  const [systemIsDark, setSystemIsDark] = useState(false);
+
   useEffect(() => {
-    applyDOM(state.scheme, state.mode);
-  }, [state.scheme, state.mode]);
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    setSystemIsDark(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setSystemIsDark(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const resolvedMode: 'light' | 'dark' = state.mode === 'system' ? (systemIsDark ? 'dark' : 'light') : state.mode;
+
+  useEffect(() => {
+    applyDOM(state.scheme, resolvedMode);
+  }, [state.scheme, resolvedMode]);
 
   const setScheme = useCallback(
     (scheme: ThemeScheme) => {
@@ -75,16 +87,7 @@ export function ThemeProvider({ children, defaultScheme = 'default', defaultMode
     [storage],
   );
 
-  const toggleMode = useCallback(() => {
-    setState(prev => {
-      const mode: ThemeMode = prev.mode === 'light' ? 'dark' : 'light';
-      const next = { ...prev, mode };
-      storage.set('state', next);
-      return next;
-    });
-  }, [storage]);
-
-  return <ThemeContext.Provider value={{ ...state, setScheme, setMode, toggleMode }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ ...state, resolvedMode, setScheme, setMode }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme(): UseThemeReturn {
