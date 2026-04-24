@@ -1,0 +1,231 @@
+/* Default theme — Blue-Purple (hue ~264) */
+
+/* ---------- Light mode ---------- */
+
+:root {
+  /* Semantic roles */
+
+  --color-primary-1: oklch(0.97 0.02 264);
+  --color-primary-2: oklch(0.92 0.04 264);
+  --color-primary-3: oklch(0.82 0.08 264);
+  --color-primary-4: oklch(0.55 0.22 264);
+  --color-primary-5: oklch(0.48 0.2 264);
+  --color-primary-6: oklch(0.4 0.16 264);
+  --color-primary-7: oklch(0.3 0.1 264);
+
+  --color-success-1: oklch(0.96 0.03 155);
+  --color-success-2: oklch(0.9 0.06 155);
+  --color-success-3: oklch(0.78 0.12 155);
+  --color-success-4: oklch(0.62 0.19 155);
+  --color-success-5: oklch(0.52 0.16 155);
+  --color-success-6: oklch(0.42 0.12 155);
+  --color-success-7: oklch(0.3 0.07 155);
+
+  --color-warning-1: oklch(0.97 0.02 75);
+  --color-warning-2: oklch(0.92 0.05 75);
+  --color-warning-3: oklch(0.82 0.1 75);
+  --color-warning-4: oklch(0.75 0.16 75);
+  --color-warning-5: oklch(0.65 0.14 75);
+  --color-warning-6: oklch(0.52 0.1 75);
+  --color-warning-7: oklch(0.38 0.06 75);
+
+  --color-danger-1: oklch(0.97 0.01 27);
+  --color-danger-2: oklch(0.92 0.04 27);
+  --color-danger-3: oklch(0.8 0.1 27);
+  --color-danger-4: oklch(0.58 0.22 27);
+  --color-danger-5: oklch(0.5 0.2 27);
+  --color-danger-6: oklch(0.42 0.16 27);
+  --color-danger-7: oklch(0.3 0.08 27);
+
+  --color-info-1: oklch(0.97 0.01 220);
+  --color-info-2: oklch(0.92 0.03 220);
+  --color-info-3: oklch(0.82 0.06 220);
+  --color-info-4: oklch(0.6 0.15 220);
+  --color-info-5: oklch(0.5 0.12 220);
+  --color-info-6: oklch(0.42 0.09 220);
+  --color-info-7: oklch(0.3 0.05 220);
+
+  /* Usage types */
+
+  --color-rim-1: oklch(0.98 0.002 264);
+  --color-rim-2: oklch(0.95 0.003 264);
+  --color-rim-3: oklch(0.92 0.004 264);
+  --color-rim-4: oklch(0.82 0.005 264);
+  --color-rim-5: oklch(0.7 0.005 264);
+  --color-rim-6: oklch(0.55 0.004 264);
+  --color-rim-7: oklch(0.35 0.003 264);
+
+  --color-word-1: oklch(0.85 0.003 264);
+  --color-word-2: oklch(0.72 0.004 264);
+  --color-word-3: oklch(0.6 0.004 264);
+  --color-word-4: oklch(0.5 0.003 264);
+  --color-word-5: oklch(0.42 0.003 264);
+  --color-word-6: oklch(0.3 0.002 264);
+  --color-word-7: oklch(0.15 0.001 264);
+
+  --color-backdrop-1: oklch(1 0 0);
+  --color-backdrop-2: oklch(0.98 0.002 264);
+  --color-backdrop-3: oklch(0.96 0.003 264);
+  --color-backdrop-4: oklch(0.94 0.003 264);
+  --color-backdrop-5: oklch(0.92 0.003 264);
+  --color-backdrop-6: oklch(0.88 0.002 264);
+  --color-backdrop-7: oklch(0.82 0.002 264);
+
+  --color-fill-1: oklch(0.95 0.003 264);
+  --color-fill-2: oklch(0.88 0.004 264);
+  --color-fill-3: oklch(0.78 0.005 264);
+  --color-fill-4: oklch(0.65 0.005 264);
+  --color-fill-5: oklch(0.52 0.004 264);
+  --color-fill-6: oklch(0.4 0.003 264);
+  --color-fill-7: oklch(0.28 0.002 264);
+
+  /* shadcn semantic mapping */
+
+  --background: var(--color-backdrop-1);
+  --foreground: var(--color-word-7);
+  --card: var(--color-backdrop-1);
+  --card-foreground: var(--color-word-7);
+  --popover: var(--color-backdrop-1);
+  --popover-foreground: var(--color-word-7);
+  --primary: var(--color-primary-4);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: var(--color-backdrop-3);
+  --secondary-foreground: var(--color-word-7);
+  --muted: var(--color-backdrop-3);
+  --muted-foreground: var(--color-word-5);
+  --accent: var(--color-backdrop-3);
+  --accent-foreground: var(--color-word-7);
+  --destructive: var(--color-danger-4);
+  --border: var(--color-rim-3);
+  --input: var(--color-rim-3);
+  --ring: var(--color-rim-5);
+  --chart-1: var(--color-primary-3);
+  --chart-2: var(--color-primary-4);
+  --chart-3: var(--color-primary-5);
+  --chart-4: var(--color-success-4);
+  --chart-5: var(--color-warning-4);
+  --radius: 0.45rem;
+  --sidebar: var(--color-backdrop-2);
+  --sidebar-foreground: var(--color-word-7);
+  --sidebar-primary: var(--color-primary-5);
+  --sidebar-primary-foreground: var(--color-word-1);
+  --sidebar-accent: var(--color-backdrop-3);
+  --sidebar-accent-foreground: var(--color-word-7);
+  --sidebar-border: var(--color-rim-3);
+  --sidebar-ring: var(--color-rim-5);
+}
+
+/* ---------- Dark mode ---------- */
+
+html[data-theme='dark'] {
+  /* Semantic roles */
+
+  --color-primary-1: oklch(0.25 0.05 264);
+  --color-primary-2: oklch(0.3 0.08 264);
+  --color-primary-3: oklch(0.35 0.12 264);
+  --color-primary-4: oklch(0.45 0.2 264);
+  --color-primary-5: oklch(0.58 0.18 264);
+  --color-primary-6: oklch(0.7 0.14 264);
+  --color-primary-7: oklch(0.85 0.08 264);
+
+  --color-success-1: oklch(0.22 0.04 155);
+  --color-success-2: oklch(0.28 0.07 155);
+  --color-success-3: oklch(0.35 0.12 155);
+  --color-success-4: oklch(0.52 0.18 155);
+  --color-success-5: oklch(0.62 0.16 155);
+  --color-success-6: oklch(0.72 0.12 155);
+  --color-success-7: oklch(0.85 0.06 155);
+
+  --color-warning-1: oklch(0.25 0.03 75);
+  --color-warning-2: oklch(0.32 0.06 75);
+  --color-warning-3: oklch(0.4 0.1 75);
+  --color-warning-4: oklch(0.55 0.16 75);
+  --color-warning-5: oklch(0.68 0.14 75);
+  --color-warning-6: oklch(0.78 0.1 75);
+  --color-warning-7: oklch(0.9 0.05 75);
+
+  --color-danger-1: oklch(0.22 0.04 27);
+  --color-danger-2: oklch(0.28 0.08 27);
+  --color-danger-3: oklch(0.35 0.12 27);
+  --color-danger-4: oklch(0.48 0.2 27);
+  --color-danger-5: oklch(0.58 0.18 27);
+  --color-danger-6: oklch(0.7 0.14 27);
+  --color-danger-7: oklch(0.82 0.08 27);
+
+  --color-info-1: oklch(0.25 0.03 220);
+  --color-info-2: oklch(0.3 0.06 220);
+  --color-info-3: oklch(0.38 0.1 220);
+  --color-info-4: oklch(0.52 0.14 220);
+  --color-info-5: oklch(0.62 0.12 220);
+  --color-info-6: oklch(0.72 0.09 220);
+  --color-info-7: oklch(0.85 0.05 220);
+
+  /* Usage types */
+
+  --color-rim-1: oklch(0.22 0.002 264);
+  --color-rim-2: oklch(0.28 0.002 264);
+  --color-rim-3: oklch(0.35 0.003 264);
+  --color-rim-4: oklch(0.45 0.003 264);
+  --color-rim-5: oklch(0.55 0.003 264);
+  --color-rim-6: oklch(0.65 0.003 264);
+  --color-rim-7: oklch(0.75 0.002 264);
+
+  --color-word-1: oklch(0.5 0.003 264);
+  --color-word-2: oklch(0.58 0.003 264);
+  --color-word-3: oklch(0.65 0.003 264);
+  --color-word-4: oklch(0.72 0.002 264);
+  --color-word-5: oklch(0.8 0.002 264);
+  --color-word-6: oklch(0.88 0.001 264);
+  --color-word-7: oklch(0.95 0.001 264);
+
+  --color-backdrop-1: oklch(0.22 0.002 264);
+  --color-backdrop-2: oklch(0.2 0.002 264);
+  --color-backdrop-3: oklch(0.18 0.001 264);
+  --color-backdrop-4: oklch(0.16 0.001 264);
+  --color-backdrop-5: oklch(0.15 0.001 264);
+  --color-backdrop-6: oklch(0.13 0.001 264);
+  --color-backdrop-7: oklch(0.12 0 0);
+
+  --color-fill-1: oklch(0.25 0.003 264);
+  --color-fill-2: oklch(0.32 0.003 264);
+  --color-fill-3: oklch(0.4 0.003 264);
+  --color-fill-4: oklch(0.5 0.003 264);
+  --color-fill-5: oklch(0.58 0.003 264);
+  --color-fill-6: oklch(0.65 0.002 264);
+  --color-fill-7: oklch(0.72 0.002 264);
+
+  /* shadcn semantic mapping */
+
+  --background: var(--color-backdrop-7);
+  --foreground: var(--color-word-7);
+  --card: var(--color-backdrop-1);
+  --card-foreground: var(--color-word-7);
+  --popover: var(--color-backdrop-1);
+  --popover-foreground: var(--color-word-7);
+  --primary: var(--color-primary-5);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: var(--color-word-7);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: var(--color-word-3);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: var(--color-word-7);
+  --destructive: var(--color-danger-5);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--color-word-3);
+  --chart-1: var(--color-primary-5);
+  --chart-2: var(--color-primary-6);
+  --chart-3: var(--color-primary-4);
+  --chart-4: var(--color-success-5);
+  --chart-5: var(--color-warning-5);
+  --radius: 0.45rem;
+  --sidebar: var(--color-backdrop-1);
+  --sidebar-foreground: var(--color-word-7);
+  --sidebar-primary: var(--color-primary-5);
+  --sidebar-primary-foreground: var(--color-word-1);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: var(--color-word-7);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--color-word-3);
+}
