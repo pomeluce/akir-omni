@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './pages/__root';
 import { Route as HomeRouteImport } from './pages/home';
 import { Route as AuthRouteImport } from './pages/_auth';
 import { Route as AppRouteImport } from './pages/_app';
-import { Route as R404RouteImport } from './pages/404';
 import { Route as IndexRouteImport } from './pages/index';
 import { Route as AuthLoginRouteImport } from './pages/_auth/login';
 import { Route as AppSettingsRouteImport } from './pages/_app/settings';
@@ -29,11 +28,6 @@ const AuthRoute = AuthRouteImport.update({
 } as any);
 const AppRoute = AppRouteImport.update({
   id: '/_app',
-  getParentRoute: () => rootRouteImport,
-} as any);
-const R404Route = R404RouteImport.update({
-  id: '/404',
-  path: '/404',
   getParentRoute: () => rootRouteImport,
 } as any);
 const IndexRoute = IndexRouteImport.update({
@@ -59,7 +53,6 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute;
-  '/404': typeof R404Route;
   '/home': typeof HomeRoute;
   '/dashboard': typeof AppDashboardRoute;
   '/settings': typeof AppSettingsRoute;
@@ -67,7 +60,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute;
-  '/404': typeof R404Route;
   '/home': typeof HomeRoute;
   '/dashboard': typeof AppDashboardRoute;
   '/settings': typeof AppSettingsRoute;
@@ -76,7 +68,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   '/': typeof IndexRoute;
-  '/404': typeof R404Route;
   '/_app': typeof AppRouteWithChildren;
   '/_auth': typeof AuthRouteWithChildren;
   '/home': typeof HomeRoute;
@@ -86,15 +77,14 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/404' | '/home' | '/dashboard' | '/settings' | '/login';
+  fullPaths: '/' | '/home' | '/dashboard' | '/settings' | '/login';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/404' | '/home' | '/dashboard' | '/settings' | '/login';
-  id: '__root__' | '/' | '/404' | '/_app' | '/_auth' | '/home' | '/_app/dashboard' | '/_app/settings' | '/_auth/login';
+  to: '/' | '/home' | '/dashboard' | '/settings' | '/login';
+  id: '__root__' | '/' | '/_app' | '/_auth' | '/home' | '/_app/dashboard' | '/_app/settings' | '/_auth/login';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute;
-  R404Route: typeof R404Route;
   AppRoute: typeof AppRouteWithChildren;
   AuthRoute: typeof AuthRouteWithChildren;
   HomeRoute: typeof HomeRoute;
@@ -121,13 +111,6 @@ declare module '@tanstack/react-router' {
       path: '';
       fullPath: '/';
       preLoaderRoute: typeof AppRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    '/404': {
-      id: '/404';
-      path: '/404';
-      fullPath: '/404';
-      preLoaderRoute: typeof R404RouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/': {
@@ -185,7 +168,6 @@ const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren);
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  R404Route: R404Route,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRouteWithChildren,
   HomeRoute: HomeRoute,

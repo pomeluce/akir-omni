@@ -1,5 +1,6 @@
 export { Button } from './button';
 export { Input } from './input';
+export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './resizable';
 export { Separator } from './separator';
 export { Sheet, SheetTrigger, SheetClose, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription } from './sheet';
 export {

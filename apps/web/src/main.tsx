@@ -1,10 +1,6 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from '@/app';
-import '@/app.css';
+import app from '@/app';
+import { mountPluin } from '@/plugins';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+mountPluin();
+
+createRoot(document.querySelector('#root')!).render(app());

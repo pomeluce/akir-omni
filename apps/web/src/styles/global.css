@@ -1,0 +1,6 @@
+@reference '@/styles/tailwind.css';
+@import '@app/theme/css/app.css';
+
+body {
+  @apply bg-backdrop-2;
+}
