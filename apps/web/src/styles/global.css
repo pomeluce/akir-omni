@@ -4,3 +4,7 @@
 body {
   @apply bg-backdrop-2;
 }
+
+#root {
+  @apply w-screen h-screen;
+}

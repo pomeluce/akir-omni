@@ -1,3 +1,4 @@
+import { Sidebar, SidebarInset, SidebarProvider } from '@app/ui';
 import { Link, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 
@@ -5,8 +6,13 @@ export const Route = createRootRoute({
   component: () => {
     return (
       <>
-        <main className="w-screen h-screen flex select-none">
-          <Outlet />
+        <main className="w-full h-full flex select-none">
+          <SidebarProvider style={{ '--sidebar-width': '16rem' } as React.CSSProperties}>
+            <Sidebar></Sidebar>
+            <SidebarInset className="h-full">
+              <Outlet />
+            </SidebarInset>
+          </SidebarProvider>
         </main>
         <TanStackRouterDevtools position="bottom-right" />
       </>
